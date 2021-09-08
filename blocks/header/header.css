@@ -1,0 +1,7 @@
+.header {
+  max-width: calc(100% - 200px*2);
+  min-height: 74px;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 45px;
+}

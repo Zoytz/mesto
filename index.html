@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Document</title>
+  <title>Mesto</title>
 </head>
 <body>
   <div class="page">
@@ -17,95 +17,95 @@
         <img src="./images/Avatar.webp" alt="Аватар" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button" type="button">
+          <button class="profile__edit-button" type="button" aria-label="Кнопка редактирования профиля">
           </button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="button">
+        <button class="profile__add-button" type="button" aria-label="Кнопка добавления карточек">
         </button>
       </section>
       <section class="elements page__elements">
-        <ul class="elements__list page__list">
-          <li class="elements__list-item">
+        <ul class="cards page__list">
+          <li class="card">
             <img src="./images/karachaevsk.webp" alt="Карачаевск" class="elements__image">
-            <div class="elements__content">
-              <h2 class="elements__title">
+            <div class="card__content">
+              <h2 class="card__title">
                 Карачаевск
               </h2>
-              <div class="elements__like">
+              <button class="card__like" type="button" aria-label="Поставить лайк">
 
-              </div>
+              </button>
             </div>
           </li>
-          <li class="elements__list-item">
+          <li class="card">
             <img src="./images/elbrus.webp" alt="Эльбрус" class="elements__image">
-            <div class="elements__content">
-              <h2 class="elements__title">
+            <div class="card__content">
+              <h2 class="card__title">
                 Гора Эльбрус
               </h2>
-              <div class="elements__like">
+              <button class="card__like" type="button" aria-label="Поставить лайк">
 
-              </div>
+              </button>
             </div>
           </li>
-          <li class="elements__list-item">
+          <li class="card">
             <img src="./images/dombay.webp" alt="Домбай" class="elements__image">
-            <div class="elements__content">
-              <h2 class="elements__title">
+            <div class="card__content">
+              <h2 class="card__title">
                 Домбай
               </h2>
-              <div class="elements__like">
+              <button class="card__like" type="button" aria-label="Поставить лайк">
 
-              </div>
+              </button>
             </div>
           </li>
-          <li class="elements__list-item">
+          <li class="card">
             <img src="./images/elbrus.webp" alt="Гора Эльбрус" class="elements__image">
-            <div class="elements__content">
-              <h2 class="elements__title">
+            <div class="card__content">
+              <h2 class="card__title">
                 Гора Эльбрус
               </h2>
-              <div class="elements__like">
+              <button class="card__like" type="button" aria-label="Поставить лайк">
 
-              </div>
+              </button>
             </div>
           </li>
-          <li class="elements__list-item">
+          <li class="card">
             <img src="./images/dombay.webp" alt="Домбай" class="elements__image">
-            <div class="elements__content">
-              <h2 class="elements__title">
+            <div class="card__content">
+              <h2 class="card__title">
                 Домбай
               </h2>
-              <div class="elements__like">
+              <button class="card__like" type="button" aria-label="Поставить лайк">
 
-              </div>
+              </button>
             </div>
           </li>
-          <li class="elements__list-item">
+          <li class="card">
             <img src="./images/karachaevsk.webp" alt="Карачаево-Черкессия" class="elements__image">
-            <div class="elements__content">
-              <h2 class="elements__title">
+            <div class="card__content">
+              <h2 class="card__title">
                 Карачаево-Черкессия
               </h2>
-              <div class="elements__like elements__like_active">
+              <button class="card__like card__like_active" type="button" aria-label="Поставить лайк">
 
-              </div>
+              </button>
             </div>
           </li>
         </ul>
       </section>
-      <section class="popup">
-        <form class="form">
-          <button class="form__close-btn" type="button">
+      <div class="popup">
+        <form class="form" name="edit-form">
+          <button class="form__close-btn" type="button" aria-label="Кнопка закрытия формы">
           </button>
           <h2 class="form__item form__title">
             Редактировать профиль
           </h2>
-          <input type="text" class="form__item form__name-input">
-          <input type="text" class="form__item form__job-input">
-          <input type="submit" class="form__item form__button" value="Сохранить">
+          <input type="text" class="form__input form__name-input" name="name">
+          <input type="text" class="form__input form__job-input" name="job">
+          <button type="submit" class="form__item form__button" value="Сохранить" aria-label="Кнопка отправки формы">Сохранить</button>
         </form>
-      </section>
+      </div>
       <footer class="footer page__footer">
         <p class="footer__copyright">
           © 2020 Mesto Russia

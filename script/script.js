@@ -2,40 +2,45 @@ let editButton = document.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let closeBtn = document.querySelector('.form__close-btn');
 
-function popupDisabled () {
-  popup.classList.remove('popup_active');
-}
+let title = document.querySelector('.profile__title');
+let subtitle = document.querySelector('.profile__subtitle');
 
-function popupActive () {
-  popup.classList.add('popup_active');
-};
-
-editButton.addEventListener('click', popupActive);
-closeBtn.addEventListener('click', popupDisabled);
-
-let profileTitle = document.querySelector('.profile__title').textContent;
-let profileSubtitle = document.querySelector('.profile__subtitle').textContent;
 let formNameInput = document.querySelector('.form__name-input');
 let formJobInput = document.querySelector('.form__job-input');
 
-formNameInput.setAttribute('value', `${profileTitle}`);
-formJobInput.setAttribute('value',`${profileSubtitle}`);
+let profileTitle = document.querySelector('.profile__title').textContent;
+let profileSubtitle = document.querySelector('.profile__subtitle').textContent;
 
 let formElement = document.querySelector('.form');
+
+function addInputValue () {
+  formNameInput.setAttribute('value',`${profileTitle}`);
+  formJobInput.setAttribute('value',`${profileSubtitle}`);
+};
+
+function closePopup () {
+  popup.classList.remove('popup_active');
+};
+
+function openPopup () {
+  popup.classList.add('popup_active');
+  addInputValue();
+};
+
+editButton.addEventListener('click', openPopup);
+closeBtn.addEventListener('click', closePopup);
+
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
   
-  let NameInputValue = formNameInput.value;
-  let JobInputValue = formJobInput.value;
+  let nameInputValue = formNameInput.value;
+  let jobInputValue = formJobInput.value;
 
-  let title = document.querySelector('.profile__title');
-  let subtitle = document.querySelector('.profile__subtitle');
-
-  title.textContent = `${NameInputValue}`;
-  subtitle.textContent = `${JobInputValue}`;
+  title.textContent = nameInputValue;
+  subtitle.textContent = jobInputValue;
   
-  popupDisabled();
-}
+  closePopup();
+};
 
 formElement.addEventListener('submit', formSubmitHandler);

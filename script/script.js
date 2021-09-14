@@ -8,14 +8,11 @@ let subtitle = document.querySelector('.profile__subtitle');
 let formNameInput = document.querySelector('.form__input_type_name');
 let formJobInput = document.querySelector('.form__input_type_job');
 
-let profileTitle = document.querySelector('.profile__title').textContent;
-let profileSubtitle = document.querySelector('.profile__subtitle').textContent;
-
 let formElement = document.querySelector('.form');
 
 function addInputValue () {
-  formNameInput.setAttribute('value',`${profileTitle}`);
-  formJobInput.setAttribute('value',`${profileSubtitle}`);
+  formNameInput.value = title.textContent;
+  formJobInput.value = subtitle.textContent;
 };
 
 function closePopup () {
@@ -32,13 +29,10 @@ closeBtn.addEventListener('click', closePopup);
 
 
 function formSubmitHandler (evt) {
-  evt.preventDefault(); 
-  
-  let nameInputValue = formNameInput.value;
-  let jobInputValue = formJobInput.value;
+  evt.preventDefault();
 
-  title.textContent = nameInputValue;
-  subtitle.textContent = jobInputValue;
+  title.textContent = formNameInput.value;
+  subtitle.textContent = formJobInput.value;
   
   closePopup();
 };

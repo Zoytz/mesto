@@ -5,8 +5,8 @@ let closeBtn = document.querySelector('.form__close-btn');
 let title = document.querySelector('.profile__title');
 let subtitle = document.querySelector('.profile__subtitle');
 
-let formNameInput = document.querySelector('.form__name-input');
-let formJobInput = document.querySelector('.form__job-input');
+let formNameInput = document.querySelector('.form__input_type_name');
+let formJobInput = document.querySelector('.form__input_type_job');
 
 let profileTitle = document.querySelector('.profile__title').textContent;
 let profileSubtitle = document.querySelector('.profile__subtitle').textContent;

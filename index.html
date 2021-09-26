@@ -27,7 +27,7 @@
       <section class="elements page__elements">
         <ul class="cards page__list">
           <li class="card">
-            <img src="./images/karachaevsk.webp" alt="Карачаевск" class="elements__image">
+            <img src="./images/karachaevsk.webp" alt="Карачаевск" class="card__image">
             <div class="card__content">
               <h2 class="card__title">
                 Карачаевск
@@ -38,7 +38,7 @@
             </div>
           </li>
           <li class="card">
-            <img src="./images/elbrus.webp" alt="Эльбрус" class="elements__image">
+            <img src="./images/elbrus.webp" alt="Эльбрус" class="card__image">
             <div class="card__content">
               <h2 class="card__title">
                 Гора Эльбрус
@@ -49,7 +49,7 @@
             </div>
           </li>
           <li class="card">
-            <img src="./images/dombay.webp" alt="Домбай" class="elements__image">
+            <img src="./images/dombay.webp" alt="Домбай" class="card__image">
             <div class="card__content">
               <h2 class="card__title">
                 Домбай
@@ -60,7 +60,7 @@
             </div>
           </li>
           <li class="card">
-            <img src="./images/elbrus.webp" alt="Гора Эльбрус" class="elements__image">
+            <img src="./images/elbrus.webp" alt="Гора Эльбрус" class="card__image">
             <div class="card__content">
               <h2 class="card__title">
                 Гора Эльбрус
@@ -71,7 +71,7 @@
             </div>
           </li>
           <li class="card">
-            <img src="./images/dombay.webp" alt="Домбай" class="elements__image">
+            <img src="./images/dombay.webp" alt="Домбай" class="card__image">
             <div class="card__content">
               <h2 class="card__title">
                 Домбай
@@ -82,7 +82,7 @@
             </div>
           </li>
           <li class="card">
-            <img src="./images/karachaevsk.webp" alt="Карачаево-Черкессия" class="elements__image">
+            <img src="./images/karachaevsk.webp" alt="Карачаево-Черкессия" class="card__image">
             <div class="card__content">
               <h2 class="card__title">
                 Карачаево-Черкессия
@@ -94,18 +94,39 @@
           </li>
         </ul>
       </section>
-      <div class="popup">
-        <form class="form" name="edit-form">
-          <button class="form__close-btn" type="button" aria-label="Кнопка закрытия формы">
-          </button>
-          <h2 class="form__item form__title">
-            Редактировать профиль
-          </h2>
-          <input type="text" class="form__input form__input_type_name" name="name">
-          <input type="text" class="form__input form__input_type_job" name="job">
-          <button type="submit" class="form__item form__button" value="Сохранить" aria-label="Кнопка отправки формы">Сохранить</button>
+
+      <div class="popup popup_type_text">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
+          <form class="form" name="edit-profile-form">
+            <h2 class="form__item form__title">Редактировать профиль</h2>
+            <input type="text" class="form__input form__input_type_name" name="name">
+            <input type="text" class="form__input form__input_type_job" name="job">
+            <button type="submit" class="form__item form__button" value="Сохранить" aria-label="Кнопка отправки формы">Сохранить</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_card">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
+          <form class="form" name="edit-card-form">
+            <h2 class="form__item form__title">Новое место</h2>
+            <input type="text" class="form__input form__input_type_place-name" name="place-name" placeholder="Название">
+            <input type="text" class="form__input form__input_type_place-image" name="place-image" placeholder="Ссылка на картинку">
+            <button type="submit" class="form__item form__button" value="Сохранить" aria-label="Кнопка отправки формы">Создать</button>
         </form>
       </div>
+      </div>
+
+      <div class="popup popup_type_image">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
+          <img class="popup__image" src="https://i10.fotocdn.net/s121/01d03ec13f5ca5ea/public_pin_l/2761787197.jpg" alt="">
+          <h2 class="popup__title">Привет, я тайтл</h2>
+        </div>
+      </div>
+
       <footer class="footer page__footer">
         <p class="footer__copyright">
           © 2020 Mesto Russia

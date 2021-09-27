@@ -153,6 +153,8 @@ function profileFormSubmitHandler (evt) {
   closePopup(evt);
 };
 
+/* Слушатель событий формы заполнения профиля */
+
 profileEditForm.addEventListener('submit', profileFormSubmitHandler);
 
 /* Обработчик формы добавления карточки */
@@ -166,4 +168,21 @@ function cardFormSubmitHandler (evt) {
   closePopup(evt);
 };
 
+/* Слушатель событий формы карточки */
+
 cardEditForm.addEventListener('submit', cardFormSubmitHandler);
+
+/* Функция карточек "из коробки" */
+
+initialCards.forEach(function(item){
+
+  const newCard = cardTemplate.querySelector('.card').cloneNode(true);
+  
+  newCard.querySelector('.card__image').src = item.link;
+  newCard.querySelector('.card__image').alt = item.name;
+  newCard.querySelector('.card__title').textContent = item.name;
+  
+  setCardListeners(newCard);
+
+  cards.append(newCard);
+});

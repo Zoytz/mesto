@@ -33,8 +33,10 @@
           <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
           <form class="form form_type_profile" name="edit-profile-form">
             <h2 class="form__item form__title">Редактировать профиль</h2>
-            <input type="text" class="form__input form__input_type_name" name="name">
-            <input type="text" class="form__input form__input_type_job" name="job">
+            <input type="text" class="form__input form__input_type_name " name="name" minlength="2" maxlength="40" required>
+            <span class="form__input-error">Привет, я - текст ошибки)</span>
+            <input type="text" class="form__input form__input_type_job" name="job" minlength="2" maxlength="200" required>
+            <span class="form__input-error">Привет, я - текст ошибки)</span>
             <button type="submit" class="form__item form__button" value="Сохранить" aria-label="Кнопка отправки формы">Сохранить</button>
           </form>
         </div>
@@ -45,9 +47,11 @@
           <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
           <form class="form form_type_card" name="edit-card-form">
             <h2 class="form__item form__title">Новое место</h2>
-            <input type="text" class="form__input form__input_type_place-name" name="place-name" placeholder="Название">
-            <input type="text" class="form__input form__input_type_place-image" name="place-image" placeholder="Ссылка на картинку">
-            <button type="submit" class="form__item form__button" value="Сохранить" aria-label="Кнопка отправки формы">Создать</button>
+            <input type="text" class="form__input form__input_type_place-name" name="place-name" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="form__input-error">Привет, я - текст ошибки)</span>
+            <input type="url" class="form__input form__input_type_place-image" name="place-image" placeholder="Ссылка на картинку" required>
+            <span class="form__input-error">Привет, я - текст ошибки)</span>
+            <button type="submit" class="form__item form__button form__button_disabled" value="Сохранить" aria-label="Кнопка отправки формы">Создать</button>
         </form>
       </div>
       </div>

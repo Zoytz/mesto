@@ -91,7 +91,7 @@ document.body.addEventListener('click', (evt) => {
     likeBtn.classList.toggle('card__like_active');
   };
 
-  if (evt.target.classList.contains('popup__close-btn')){
+  if (evt.target.classList.contains('popup__close-btn') || evt.target.classList.contains('popup')){
     const activePopup = document.querySelector('.popup_active');
     if (!activePopup){
       return;
@@ -99,6 +99,13 @@ document.body.addEventListener('click', (evt) => {
     closePopup (activePopup);
   };
   
+});
+
+document.body.addEventListener('keydown', (evt) => {
+  if (evt.key === "Escape"){
+    const activePopup = document.querySelector('.popup_active');
+    closePopup(activePopup);
+  };
 });
 
 /* Функция добавления карточек на страницу */

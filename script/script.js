@@ -34,12 +34,14 @@ const initialCards = [
 const profileEditForm = document.querySelector('.form_type_profile');
 const formNameInput = document.querySelector('.form__input_type_name');
 const formJobInput = document.querySelector('.form__input_type_job');
+const profileFormButton = profileEditForm.querySelector('.form__button');
 
 /* Форма редактирования карточки */
 
 const cardEditForm = document.querySelector('.form_type_card');
 const cardNameInput = document.querySelector('.form__input_type_place-name');
 const cardImageInput = document.querySelector('.form__input_type_place-image');
+const cardFormButton = cardEditForm.querySelector('.form__button');
 
 /* Профиль */
 
@@ -72,11 +74,19 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 
 addCardButton.addEventListener('click', function(){
   openPopup (popupTypeCard);
+  const isValid = cardEditForm.checkValidity();
+  toggleButtonState(cardFormButton, isValid, validationSettings);
 });
 
 editProfileButton.addEventListener('click', function(){
   openPopup (popupTypeText);
   addInputValue ();
+  const isValid = profileEditForm.checkValidity();
+  toggleButtonState(profileFormButton, isValid, validationSettings);
+  const inputsList = profileEditForm.querySelectorAll('.form__input');
+  inputsList.forEach(function(inputElement){
+    checkInputValidity(profileEditForm, inputElement, validationSettings);
+  });
 });
 
 function setListenersOnCard (card){
@@ -194,9 +204,6 @@ function cardFormSubmitHandler (evt) {
   cardNameInput.value = null;
   cardImageInput.value = null;
   closePopup(evt.target.closest('.popup'));
-  const buttonElement = evt.target.querySelector('.form__button');
-  buttonElement.disabled = 'disabled';
-  buttonElement.classList.add('form__button_disabled');
 };
 
 /* Слушатель событий формы карточки */

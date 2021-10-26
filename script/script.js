@@ -74,55 +74,18 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 
 addCardButton.addEventListener('click', function () {
   openPopup(popupTypeCard);
-  const addCardButton = cardEditForm.querySelector('.form__button');
-  const isFormValid = cardEditForm.checkValidity();
-  toggleButtonState(addCardButton, isFormValid);
+  const form = new FormValidator(validationSettings, cardEditForm);
+  form.resetValidation();
 });
 
 editProfileButton.addEventListener('click', function () {
-  
   addInputValue();
-  const editProfileButton = profileEditForm.querySelector('.form__button');
-  const isFormValid = profileEditForm.checkValidity();
-  const inputsList = Array.from(profileEditForm.querySelectorAll('.form__input'));
-  inputsList.forEach(function(inputElement){
-    checkInputValidity(profileEditForm, inputElement);
-  });
-  toggleButtonState(editProfileButton, isFormValid);
+  const form = new FormValidator(validationSettings, profileEditForm);
+  form.resetValidation();
   openPopup(popupTypeText);
+
 });
 
-const showError = (errorItem, inputItem) => {
-  errorItem.textContent = inputItem.validationMessage;
-  errorItem.classList.add('form__input-error_active');
-  inputItem.classList.add('form__input_type_error');
-};
-
-const hideError = (errorItem, inputItem) => {
-  errorItem.textContent = '';
-  errorItem.classList.remove('form__input-error_active');
-  inputItem.classList.remove('form__input_type_error');
-};
-
-const checkInputValidity = (formItem, inputItem) => {
-  const isInputNotValid = !inputItem.validity.valid;
-  const errorItem = formItem.querySelector(`.${inputItem.id}-error`);
-  if (isInputNotValid){
-    showError(errorItem, inputItem);
-  } else {
-    hideError(errorItem, inputItem);
-  };
-};
-
-const toggleButtonState = (button, isValid) => {
-  if(isValid) {
-    button.classList.remove('form__button_disabled');
-    button.disabled = false;
-  } else {
-    button.classList.add('form__button_disabled');
-    button.disabled = 'disabled';
-  }
-}
 
 // function setListenersOnCard(card) {
 //   /* Слушатель на кнопку удаления */
@@ -234,7 +197,7 @@ function cardFormSubmitHandler(evt) {
 
   evt.preventDefault();
 
-  const newCard = new Card( cardImageInput.value, cardNameInput.value, '#card').createCard();
+  const newCard = createCard(cardImageInput.value, cardNameInput.value, '#card');
   cards.prepend(newCard);
   cardNameInput.value = null;
   cardImageInput.value = null;
@@ -247,15 +210,21 @@ cardEditForm.addEventListener('submit', cardFormSubmitHandler);
 
 /* Функция карточек "из коробки" */
 
+function createCard(link, name, cardSelector){
+  const card = new Card(link, name, cardSelector).createCard();
+  return card;
+}
+
 initialCards.forEach(function (item) {
 
-  const newCard = new Card(item.link, item.name, '#card').createCard();
+  const newCard = createCard(item.link, item.name, '#card');
   cards.append(newCard);
 });
 
-const formTypeProfile = new FormValidator(validationSettings, profileEditForm).enableValidation();
-const formTypeCard = new FormValidator(validationSettings, cardEditForm).enableValidation();
-
+const formTypeProfile = new FormValidator(validationSettings, profileEditForm);
+formTypeProfile.enableValidation();
+const formTypeCard = new FormValidator(validationSettings, cardEditForm);
+formTypeCard.enableValidation();
 
 import { Card } from './Card.js';
 import {FormValidator, validationSettings} from './FormValidator.js';

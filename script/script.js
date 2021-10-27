@@ -74,18 +74,14 @@ const editProfileButton = document.querySelector('.profile__edit-button');
 
 addCardButton.addEventListener('click', function () {
   openPopup(popupTypeCard);
-  const form = new FormValidator(validationSettings, cardEditForm);
-  form.resetValidation();
+  formTypeCard.resetValidation();
 });
 
 editProfileButton.addEventListener('click', function () {
   addInputValue();
-  const form = new FormValidator(validationSettings, profileEditForm);
-  form.resetValidation();
+  formTypeProfile.resetValidation();
   openPopup(popupTypeText);
-
 });
-
 
 // function setListenersOnCard(card) {
 //   /* Слушатель на кнопку удаления */

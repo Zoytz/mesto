@@ -1,13 +1,15 @@
+import PopupWithImage from './PopupWithImage.js';
+import handleCardClick from './script.js';
 
-
-import {popupImage, popupTitle, popupTypeImage, openPopup} from './script.js';
+import {popupImage, popupTitle, popupTypeImage} from './script.js';
 
 export class Card {
 
-  constructor(dataLink, dataText, cardTemplate) {
+  constructor(dataLink, dataText, cardTemplate, handleCardClick) {
     this._dataLink = dataLink;
     this._dataText = dataText;
     this._cardTemplate = document.querySelector(cardTemplate).content;
+    this._handleCardClick = handleCardClick;
   }
 
   _setListenersOnCard(card) {
@@ -18,12 +20,12 @@ export class Card {
     });
     /* Слушатель на изображение */
     const cardImage = card.querySelector('.card__image');
-    const cardTitle = card.querySelector('.card__title');
+    // const cardTitle = card.querySelector('.card__title');
     cardImage.addEventListener('click', () => {
-      popupImage.setAttribute('src', cardImage.src);
-      popupImage.setAttribute('alt', cardTitle.textContent);
-      popupTitle.textContent = cardTitle.textContent;
-      openPopup(popupTypeImage);
+      // popupImage.setAttribute('src', cardImage.src);
+      // popupImage.setAttribute('alt', cardTitle.textContent);
+      // popupTitle.textContent = cardTitle.textContent;
+      this._handleCardClick(this._dataLink, this._dataText);
     });
     /* Слушатель на лайкусик */
     const cardLikeBtn = card.querySelector('.card__like');

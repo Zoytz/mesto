@@ -1,4 +1,17 @@
 /* Карточки "из коробки" */
+import './page/index.css';
+
+// теперь картинки можно импортировать,
+// вебпак добавит в переменные правильные пути
+import jordanImage from './images/Logo.svg';
+import jamesImage from './images/Avatar.webp';
+
+const whoIsTheGoat = [
+  // меняем исходные пути на переменные
+  { name: 'Michael Jordan', image: jordanImage },
+  { name: 'Lebron James', link: jamesImage },
+];
+
 
 const initialCards = [
   {

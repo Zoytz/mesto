@@ -8,14 +8,14 @@ export default class UserInfo {
 
   getUserInfo(){
     this._userData = {};
-    this._userData.name = document.querySelector(this._nameSelector).textContent;
+    this._userData.name = this._title.textContent;
     
-    this._userData.job = document.querySelector(this._jobSelector).textContent;
+    this._userData.job = this._job.textContent;
     return this._userData;
   }
 
-  setUserInfo(name, job){
-    this._title.textContent = name;
-    this._job.textContent = job;
+  setUserInfo(data){
+    this._title.textContent = data.name;
+    this._job.textContent = data.job;
   }
 }

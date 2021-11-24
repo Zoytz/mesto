@@ -13,7 +13,10 @@
         <img class="logo" src="<%=require('./images/Logo.svg')%>" alt="Место">
       </header>
       <section class="profile page__profile">
-        <img src="<%=require('./images/Avatar.webp')%>" alt="Аватар" class="profile__avatar">
+        <div class="profile__avatar-container">
+          <img src="<%=require('./images/Avatar.webp')%>" alt="Аватар" class="profile__avatar">
+          <button class="profile__avatar-edit-btn" type="button" aria-label="Кнопка редактирования аватара"></button>
+        </div>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button" type="button" aria-label="Кнопка редактирования профиля">
@@ -51,8 +54,8 @@
             <input type="url" class="form__input form__input_type_place-image" name="placeImage" id="place-image" placeholder="Ссылка на картинку" required>
             <span class="form__input-error place-image-error"></span>
             <button type="submit" class="form__item form__button form__button_disabled" value="Сохранить" aria-label="Кнопка отправки формы" disabled>Создать</button>
-        </form>
-      </div>
+          </form>
+        </div>
       </div>
 
       <div class="popup popup_type_image">
@@ -60,6 +63,28 @@
           <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
           <img class="popup__image" src="https://i10.fotocdn.net/s121/01d03ec13f5ca5ea/public_pin_l/2761787197.jpg" alt="">
           <h2 class="popup__title">Привет, я тайтл</h2>
+        </div>
+      </div>
+
+      <div class="popup popup_type_confirm">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
+          <form class="form form_type_confirm" name="confirm-form" novalidate>
+            <h2 class="form__item form__title form__title_type_confirm">Вы уверены?</h2>
+            <button type="submit" class="form__item form__button" value="Да" aria-label="Кнопка отправки формы">Да</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_avatar">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button" aria-label="Кнопка закрытия попапа"></button>
+          <form class="form form_type_avatar" name="edit-avatar-form" novalidate>
+            <h2 class="form__item form__title">Обновить аватар</h2>
+            <input type="url" class="form__input form__input_type_avatar" name="avatarImage" id="avatar" placeholder="Ссылка на картинку" required>
+            <span class="form__input-error avatar-error"></span>
+            <button type="submit" class="form__item form__button form__button_disabled" value="Сохранить" aria-label="Кнопка отправки формы" disabled>Сохранить</button>
+          </form>
         </div>
       </div>
 
@@ -76,7 +101,10 @@
       <img src="#" alt="Тут все заполнится, обещаю)" class="card__image">
       <div class="card__content">
         <h2 class="card__title"></h2>
-        <button class="card__like" type="button" aria-label="Поставить лайк"></button>
+        <div class="card__like-container">
+          <button class="card__like" type="button" aria-label="Поставить лайк"></button>
+          <p class="card__like-counter">0</p>
+        </div>
       </div>
     </li>
   </template>

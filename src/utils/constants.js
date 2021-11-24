@@ -47,3 +47,6 @@ export const popupTypeImage = document.querySelector('.popup_type_image');
 
 export const addCardButton = document.querySelector('.profile__add-button');
 export const editProfileButton = document.querySelector('.profile__edit-button');
+
+export const avatarEditForm = document.querySelector('.form_type_avatar');
+export const avatarEditButton = document.querySelector('.profile__avatar-edit-btn');

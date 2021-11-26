@@ -50,3 +50,4 @@ export const editProfileButton = document.querySelector('.profile__edit-button')
 
 export const avatarEditForm = document.querySelector('.form_type_avatar');
 export const avatarEditButton = document.querySelector('.profile__avatar-edit-btn');
+export const avatar = document.querySelector('.profile__avatar');

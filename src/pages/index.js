@@ -53,28 +53,44 @@ const api = new Api({
 
 let userData = {};
 
-api.getUserInfo()
-  .then((data) => {
-    userInfo.setUserInfo(data);
-    userData = data;
-  })
-  .catch(err => console.log(err, data));
+// api.getUserInfo()
+//   .then((data) => {
+//     userInfo.setUserInfo(data);
+//     userData = data;
+//   })
+//   .catch(err => console.log(err, data));
 
-// function createCard(data, cardSelector, boolean) {
-//   const card = new Card(data, cardSelector, handleCardClick).createCard();
-//   sectionDeafaultCards.addItem(card, boolean);
-// };
+// // function createCard(data, cardSelector, boolean) {
+// //   const card = new Card(data, cardSelector, handleCardClick).createCard();
+// //   sectionDeafaultCards.addItem(card, boolean);
+// // };
 
-api.getInitialCards()
-  .then((res) => {
-    const sectionDeafaultCards = new Section({
-      items: res,
-      renderer: (item) => {
-        const card = new Card(item, '#card', handleCardClick, userData, api, handleDelBtnClick).createCard();
-        sectionDeafaultCards.addItem(card, true);
-      }
-    }, '.cards')
-    sectionDeafaultCards.rendererItems();
+// api.getInitialCards()
+//   .then((res) => {
+//     const sectionDeafaultCards = new Section({
+//       items: res,
+//       renderer: (item) => {
+//         const card = new Card(item, '#card', handleCardClick, userData, api, handleDelBtnClick).createCard();
+//         sectionDeafaultCards.addItem(card, true);
+//       }
+//     }, '.cards')
+//     sectionDeafaultCards.rendererItems();
+//   })
+//   .catch((err) => {console.log('Ошибочка вышла', err)});
+function createCard(item){
+  const newCard = new Card(item, '#card', handleCardClick, userData, api, handleDelBtnClick).createCard();
+  return newCard;
+}
+
+const sectionForCards = new Section({
+  renderer: (item) => {return createCard(item)}}
+  , '.cards');
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([resUser, resCards]) => {
+    userInfo.setUserInfo(resUser);
+    userData = resUser;
+    sectionForCards.rendererItems(resCards);
   })
   .catch((err) => {console.log('Ошибочка вышла', err)});
 
@@ -100,35 +116,45 @@ function addInputValue() {
   formJobInput.value = userValues.job;
 };
 
-function profileFormSubmitHandler(data, form) {
-  const formBtn = form.querySelector('.form__button') ;
-  formBtn.textContent = 'Сохранение...';
+function profileFormSubmitHandler(data) {
+  popupWithProfileForm.renderLoading(true);
+  // const formBtn = form.querySelector('.form__button') ;
+  // formBtn.textContent = 'Сохранение...';
   api.editUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res);
       popupWithProfileForm.close();
     })
     .catch((err) => {console.log('Ошибочка вышла', err)})
-    .finally(() => {formBtn.textContent = formBtn.value;})
+    .finally(() => {
+      popupWithProfileForm.renderLoading(false);
+      // formBtn.textContent = formBtn.value;
+    })
 };
 
-function cardFormSubmitHandler(data, form) {
-  const formBtn = form.querySelector('.form__button') ;
-  formBtn.textContent = 'Сохранение...';
+function cardFormSubmitHandler(data) {
+  popupWithCardForm.renderLoading(true);
+  // const formBtn = form.querySelector('.form__button') ;
+  // formBtn.textContent = 'Сохранение...';
   api.addCard(data)
     .then((res) => {
-      const sectionAddCards = new Section({
-      items: res,
-      renderer: (item) => {
-        const card = new Card(item, '#card', handleCardClick, userData, api, handleDelBtnClick).createCard();
-        sectionAddCards.addItem(card, false);
-      }
-    }, '.cards')
-    sectionAddCards.renderer(res);
+      const newCard = sectionForCards.renderer(res);
+      sectionForCards.addItem(newCard, false);
+    //   const sectionAddCards = new Section({
+    //   items: res,
+    //   renderer: (item) => {
+    //     const card = new Card(item, '#card', handleCardClick, userData, api, handleDelBtnClick).createCard();
+    //     sectionAddCards.addItem(card, false);
+    //   }
+    // }, '.cards')
+    // sectionAddCards.renderer(res);
     popupWithCardForm.close();
   })
   .catch((err) => {console.log('Ошибочка вышла', err)})
-  .finally(() => {formBtn.textContent = formBtn.value;})
+  .finally(() => {
+    popupWithCardForm.renderLoading(false);
+    // formBtn.textContent = formBtn.value;
+  })
 };
 
 function delCardSubmitHandler(cardID, card) {
@@ -142,23 +168,22 @@ function delCardSubmitHandler(cardID, card) {
 }
 
 
-function avatarFormSubmitHandler(data, form) {
-  const formBtn = form.querySelector('.form__button') ;
-  formBtn.textContent = 'Сохранение...';
+function avatarFormSubmitHandler(data) {
+  // const formBtn = form.querySelector('.form__button') ;
+  // formBtn.textContent = 'Сохранение...';
+  popupWithAvatar.renderLoading(true);
   api.editUserAvatar(data)
     .then((res) => {
-      avatar.src = res.avatar;
+      userInfo.setUserInfo(res);
       popupWithAvatar.close();
     })
     .catch(err => console.log(err, res))
-    .finally(() => {formBtn.textContent = formBtn.value;});
+    .finally(() => {
+      popupWithAvatar.renderLoading(false);
+      // formBtn.textContent = formBtn.value;
+    });
 }
 
-// const sectionDeafaultCards = new Section({
-//   items: cardsFromServer, 
-//   renderer: (item) => {createCard(item, '#card', true)}
-// }, '.cards')
-// sectionDeafaultCards.rendererItems();
 
 
 

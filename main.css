@@ -20,7 +20,7 @@
 .profile__avatar-edit-btn{background-color:rgba(0,0,0,.5);background-image:url(a086f758840ae814ecde.svg);background-position:50%;background-repeat:no-repeat;background-size:26px 26px;border:0;bottom:0;box-sizing:border-box;color:#fff;height:100%;left:0;opacity:0;padding:0;position:absolute;right:0;top:0;transition:visibility 0s,opacity .2s linear;visibility:hidden;width:100%}
 .elements{box-sizing:border-box;color:#000;max-width:880px;padding-top:50px;width:100%}@media screen and (max-width:1023px){.elements{padding-left:19px;padding-right:19px;padding-top:36px}}
 .cards{grid-column-gap:17px;grid-row-gap:20px;display:grid;grid-template-columns:repeat(auto-fit,282px);justify-content:center;width:100%}
-.card{border-radius:10px;font-family:Inter,Arial,Helvetica,sans-serif;font-size:0;height:361px;overflow:hidden;position:relative}
+.card{border-radius:10px;display:flex;flex-direction:column;font-family:Inter,Arial,Helvetica,sans-serif;font-size:0;height:361px;overflow:hidden;position:relative}
 .card__title{font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card__content{align-items:center;background-color:#fff;display:flex;justify-content:space-between;min-height:79px;padding:0 20px}
 .card__like{background-color:#fff;background-image:url(e3b9ba5840ebe97bc077.svg);background-position:50%;background-repeat:no-repeat;background-size:22px 19px;border:none;color:#000;cursor:pointer;height:19px;padding:0;transition:opacity .2s linear;width:28px}.card__like:hover{opacity:.5}
